@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Assignment4.Entities/1.0.0": {
+        "dependencies": {
+          "Assignment4.Core": "1.0.0"
+        },
+        "runtime": {
+          "Assignment4.Entities.dll": {}
+        }
+      },
+      "Assignment4.Core/1.0.0": {
+        "runtime": {
+          "Assignment4.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Assignment4.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Assignment4.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
+        "projectName": "Assignment4.Core",
+        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
+        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
+        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj",
+        "projectName": "Assignment4.Entities.Tests",
+        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj",
+        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
+        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj": {
+                "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj",
+        "projectName": "Assignment4.Entities",
+        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj",
+        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
+        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
+                "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
