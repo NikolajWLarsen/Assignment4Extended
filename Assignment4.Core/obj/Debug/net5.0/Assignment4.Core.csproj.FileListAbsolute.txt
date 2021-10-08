@@ -1,0 +1,12 @@
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/Assignment4.Core.deps.json
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/Assignment4.Core.dll
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/ref/Assignment4.Core.dll
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/Assignment4.Core.pdb
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.csproj.AssemblyReference.cache
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.AssemblyInfoInputs.cache
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.AssemblyInfo.cs
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.csproj.CoreCompileInputs.cache
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.dll
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/ref/Assignment4.Core.dll
+/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.pdb
