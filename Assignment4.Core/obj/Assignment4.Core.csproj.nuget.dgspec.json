@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {}
+    "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {}
   },
   "projects": {
-    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
+    "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
+        "projectUniqueName": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
         "projectName": "Assignment4.Core",
-        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
-        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
-        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/",
+        "projectPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
+        "packagesPath": "/Users/Freja/.nuget/packages/",
+        "outputPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+          "/Users/Freja/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

@@ -10,3 +10,15 @@
 /Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.dll
 /Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/ref/Assignment4.Core.dll
 /Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.pdb
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/Assignment4.Core.deps.json
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/Assignment4.Core.dll
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/ref/Assignment4.Core.dll
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/bin/Debug/net5.0/Assignment4.Core.pdb
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.csproj.AssemblyReference.cache
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.AssemblyInfoInputs.cache
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.AssemblyInfo.cs
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.csproj.CoreCompileInputs.cache
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.dll
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/ref/Assignment4.Core.dll
+/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/Debug/net5.0/Assignment4.Core.pdb
