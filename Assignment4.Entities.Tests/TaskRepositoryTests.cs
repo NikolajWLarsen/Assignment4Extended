@@ -228,10 +228,6 @@ namespace Assignment4.Entities.Tests
             //TODO: count instead
             Assert.Collection(actual,
                 t => Assert.Equal((tag1), t)
-                // t => Assert.Equal((tag1).Name, t.Name),
-                // t => Assert.Equal((tag1).tasks, t.tasks)
-                //t => Assert.Equal((tag1).Name, t.Name),
-                //t => Assert.Equal(tag2, t)
             );
         }
 
