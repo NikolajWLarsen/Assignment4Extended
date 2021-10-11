@@ -56,19 +56,37 @@ namespace Assignment4.Entities
             return Response.Deleted;
         }
 
-        public TagDTO Read(int tagId)
+        public TagDTO Read(int tagId) //could potentially also return Response.NotFound
         {
-            throw new System.NotImplementedException();
+            var tag = _context.Tags.Find(tagId);
+            return tag != null ? new TagDTO(tag.Id, tag.Name) : null ;
         }
 
         public IReadOnlyCollection<TagDTO> ReadAll()
         {
-            throw new System.NotImplementedException();
+            var TagDTOs = new List<TagDTO>(); 
+            var tagList = _context.Tags.ToList();
+            
+            foreach (var tag in tagList)
+            {
+                var tagDTO = new TagDTO(tag.Id,tag.Name);
+                TagDTOs.Add(tagDTO);
+            }
+            return TagDTOs;
         }
 
         public Response Update(TagUpdateDTO tag)
         {
-            throw new System.NotImplementedException();
+            var tagResult = _context.Tags.Find(tag.Id);
+            if (tagResult == null){
+                return Response.NotFound;
+            }
+            tagResult.Id = tag.Id;
+            tagResult.Name = tag.Name;
+ 
+            _context.SaveChanges();
+
+            return Response.Updated;
         }
     }
 }

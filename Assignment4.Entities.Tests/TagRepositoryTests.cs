@@ -124,11 +124,73 @@ namespace Assignment4.Entities.Tests
         }
 
 
-        // [Fact]
-        // public void if_tag_not_found_return_null()
-        // {
-            
-        // } 
+         [Fact]
+         public void if_tag_not_found_return_null()
+         {
+            //Arrange
+            var tag = new Tag {Id = 1, Name = "Tag Not Inserted", tasks = new List<Task>(){}};
 
+            //Act
+            var actual = _repo.Read(tag.Id);
+
+            //Assert
+            Assert.Null(actual);
+         } 
+
+
+        [Fact]
+        public void ReadAll_returns_IReadOnlyCollection_containing_TagDTO_1_2()
+        {
+            //arrange
+            var tag1 = new Tag {Id = 1, Name = "tag 1", tasks = new List<Task>(){}};
+            var tag2 = new Tag {Id = 2, Name = "tag 2", tasks = new List<Task>(){}};
+            
+            _context.Tags.Add(tag1); 
+            _context.Tags.Add(tag2);
+
+            _context.SaveChanges();
+
+            var tagDTO1 = new TagDTO(1,"tag 1");
+            var tagDTO2 = new TagDTO(2, "tag 2");
+
+            //act
+            var actual = _repo.ReadAll();
+
+            //assert
+             Assert.Collection(actual,
+                t => Assert.Equal(tagDTO1, t),
+                t => Assert.Equal(tagDTO2, t)
+             );
+        }
+
+        [Fact]
+        public void update_updates_given_existing_tag()
+        {
+        //Arrange
+        var tag1 = new Tag {Id = 1, Name = "tag 1", tasks = new List<Task>(){}};
+        var tagDTO2 = new TagUpdateDTO{Id = 1, Name = "tag 2"};
+        _context.Tags.Add(tag1);
+        _context.SaveChanges();
+        
+        //Act
+        var actual = _repo.Update(tagDTO2);
+        
+        //Assert
+        Assert.Equal(Response.Updated, actual);
+        }
+
+        
+        [Fact]
+        public void update_returns_not_found_given_non_existing_tag()
+        {
+        //Arrange
+        var tagDTO2 = new TagUpdateDTO{Id = 1, Name = "tag 2"};
+        
+        //Act
+        var actual = _repo.Update(tagDTO2);
+        
+        //Assert
+        Assert.Equal(Response.NotFound, actual);
+        }
     }
 }

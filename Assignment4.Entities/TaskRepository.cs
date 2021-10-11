@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assignment4.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment4.Entities
 {
@@ -13,23 +16,86 @@ namespace Assignment4.Entities
         }
 
         public (Response Response, int TaskId) Create(TaskCreateDTO task)
-        {
-            throw new System.NotImplementedException();
+        {            
+            /*if(_kanbanContext.Tasks.FirstOrDefault(t => t.Title == task.Title) != null)
+            {
+                return (Response.Conflict, -1);
+            }*/
+
+            if (task.AssignedToId == null) {
+                return (Response.BadRequest, -1);
+            }
+
+            var newTask = new Task{
+                Title = task.Title,
+                AssignedTo = (int) task.AssignedToId,
+                Description = task.Description,
+                Created = DateTime.UtcNow,
+                State = State.New,
+                Tags = new List<Tag>(), //task.Tags
+                StateUpdated = DateTime.UtcNow    
+            };
+            
+            _kanbanContext.Tasks.Add(newTask);
+            _kanbanContext.SaveChanges();
+
+            return (Response.Created, newTask.Id);
         }
 
         public Response Delete(int taskId)
         {
-            throw new System.NotImplementedException();
+            var task = _kanbanContext.Tasks.Find(taskId);
+            State state = task.State;
+            
+            switch (state)
+            {
+                case State.Active: 
+                    task.State = State.Removed;
+                    task.StateUpdated = DateTime.UtcNow;
+                    _kanbanContext.SaveChanges();
+                    return Response.Updated;
+                case State.Resolved:
+                case State.Closed:
+                case State.Removed:
+                    return Response.Conflict;
+                case State.New:
+                    _kanbanContext.Remove(task);
+                    _kanbanContext.SaveChanges();
+                    return Response.Deleted;
+                default:
+                    return Response.NotFound;
+            }
         }
 
         public TaskDetailsDTO Read(int taskId)
         {
-            throw new System.NotImplementedException();
-        }
+            /* //string Description, DateTime Created, string AssignedToName, IReadOnlyCollection<string> Tags, 
+            //State State, DateTime StateUpdated) : TaskDTO(Id, Title, AssignedToName, Tags, State);
+            var task = _kanbanContext.Tasks.Find(taskId);
+            return taskId != null ? new TaskDetailsDTO(task.Id, task.Title, task.Description, task.Created, "Bobby", task.Tags.AsReadOnly().ToList(), task.State, task.StateUpdated ) : null ;
+         */
+        return null;
+         } 
+
 
         public IReadOnlyCollection<TaskDTO> ReadAll()
         {
-            throw new System.NotImplementedException();
+            var TaskDTOs = new List<TaskDTO>(); 
+            var taskList = _kanbanContext.Tasks.ToList();
+            
+            foreach (var task in taskList)
+            {
+                var tagList = new List<string>();
+                foreach (var tag in task.Tags)
+                {
+                    tagList.Add(tag.Name);
+                }
+                //TODO: What about Bobby? We have not implemented user
+                var taskDTO = new TaskDTO(task.Id, task.Title, "Bobby", tagList, task.State); 
+
+                TaskDTOs.Add(taskDTO);
+            }
+            return TaskDTOs;
         }
 
         public IReadOnlyCollection<TaskDTO> ReadAllByState(State state)
@@ -54,7 +120,37 @@ namespace Assignment4.Entities
 
         public Response Update(TaskUpdateDTO task)
         {
-            throw new System.NotImplementedException();
+            //Create/update task must allow for editing tags.
+            //Updating the State of a task will change the StateUpdated to current time in UTC.
+            //Assigning a user which does not exist should return BadRequest.
+            ////var  = _kanbanContext.Tasks.Find(task.Id);
+            //var taskResult = _kanbanContext.Tasks.Select(t =>)
+            var taskResult =_kanbanContext.Tasks.Include(t => t.Tags).FirstOrDefault(t => t.Id == task.Id);
+            
+            if (taskResult == null){
+                Console.WriteLine("notfound");
+                return Response.NotFound;
+            }
+
+            if (task.AssignedToId == null) {
+                Console.WriteLine("badrequest");
+                return Response.BadRequest;
+            }
+
+            taskResult.Title = task.Title;
+            taskResult.AssignedTo = (int) task.AssignedToId;
+            taskResult.Description = task.Description;
+            var tagResults = taskResult.Tags.Where(t => task.Tags.Contains(t.Name)).ToList();
+            taskResult.Tags = tagResults; 
+            taskResult.State = task.State;
+            taskResult.StateUpdated = DateTime.UtcNow;
+ 
+            Console.WriteLine(taskResult.Title + " " + taskResult.Description);
+            _kanbanContext.Update(taskResult);
+            _kanbanContext.SaveChanges();
+            
+
+            return Response.Updated;
         }
     }
 }

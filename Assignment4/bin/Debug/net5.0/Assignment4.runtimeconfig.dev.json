@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/Freja/.dotnet/store/|arch|/|tfm|",
+      "/Users/Freja/.nuget/packages"
+    ]
+  }
+}
