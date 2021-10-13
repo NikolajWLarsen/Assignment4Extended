@@ -32,7 +32,7 @@ namespace Assignment4.Entities
                 Description = task.Description,
                 Created = DateTime.UtcNow,
                 State = State.New,
-                Tags = new List<Tag>(), //task.Tags
+                Tags = new List<Tag>(), //task.Tags //TODO: haha we did not
                 StateUpdated = DateTime.UtcNow    
             };
             
@@ -69,20 +69,36 @@ namespace Assignment4.Entities
 
         public TaskDetailsDTO Read(int taskId)
         {
-            /* //string Description, DateTime Created, string AssignedToName, IReadOnlyCollection<string> Tags, 
-            //State State, DateTime StateUpdated) : TaskDTO(Id, Title, AssignedToName, Tags, State);
+
             var task = _kanbanContext.Tasks.Find(taskId);
-            return taskId != null ? new TaskDetailsDTO(task.Id, task.Title, task.Description, task.Created, "Bobby", task.Tags.AsReadOnly().ToList(), task.State, task.StateUpdated ) : null ;
-         */
-        return null;
+            if(task == null){
+                return null; //Response.NotFound
+            }
+
+            var TaskDetailsDTO = new TaskDetailsDTO (
+                task.Id,
+                task.Title,
+                task.Description,
+                task.Created,
+                task.AssignedTo.ToString(),
+                task.Tags.Select(t => t.Name).ToList(),
+                task.State,
+                task.StateUpdated                 
+            );
+            return TaskDetailsDTO;
          } 
 
 
         public IReadOnlyCollection<TaskDTO> ReadAll()
         {
-            var TaskDTOs = new List<TaskDTO>(); 
             var taskList = _kanbanContext.Tasks.ToList();
-            
+            return TaskToTaskDTO(taskList);
+        }
+
+        //selfmade method, to avoid code duplication
+        public IReadOnlyCollection<TaskDTO> TaskToTaskDTO(List<Task> taskList)
+        {
+            var TaskDTOs = new List<TaskDTO>(); 
             foreach (var task in taskList)
             {
                 var tagList = new List<string>();
@@ -90,8 +106,7 @@ namespace Assignment4.Entities
                 {
                     tagList.Add(tag.Name);
                 }
-                //TODO: What about Bobby? We have not implemented user
-                var taskDTO = new TaskDTO(task.Id, task.Title, "Bobby", tagList, task.State); 
+                var taskDTO = new TaskDTO(task.Id, task.Title, task.Id.ToString(), tagList, task.State); 
 
                 TaskDTOs.Add(taskDTO);
             }
@@ -100,22 +115,43 @@ namespace Assignment4.Entities
 
         public IReadOnlyCollection<TaskDTO> ReadAllByState(State state)
         {
-            throw new System.NotImplementedException();
+            var taskList = _kanbanContext.Tasks.Where(t => t.State == state).ToList();
+            
+            return TaskToTaskDTO(taskList);
         }
 
-        public IReadOnlyCollection<TaskDTO> ReadAllByTag(string tag)
+        public IReadOnlyCollection<TaskDTO> ReadAllByTag(string tagString)
         {
-            throw new System.NotImplementedException();
+            //convert string tag to actual tag???
+            //var taskList = _kanbanContext.Tasks.Where(t => t.Tags.Select(t => t.Name == tag)).ToList();
+            var taskList = _kanbanContext.Tasks.ToList();
+            var taskWithTagList = new List<Task>();
+
+            foreach (var task in taskList)
+            {
+                var tagList = new List<string>();
+                foreach (var tag in task.Tags)
+                {
+                    if(tag.Name == tagString){
+                        taskWithTagList.Add(task);
+                    }
+                }
+            }
+            return TaskToTaskDTO(taskWithTagList);
         }
 
         public IReadOnlyCollection<TaskDTO> ReadAllByUser(int userId)
         {
-            throw new System.NotImplementedException();
+            var taskList = _kanbanContext.Tasks.Where(t => t.AssignedTo == userId).ToList();
+            
+            return TaskToTaskDTO(taskList);
         }
 
         public IReadOnlyCollection<TaskDTO> ReadAllRemoved()
         {
-            throw new System.NotImplementedException();
+            var taskList = _kanbanContext.Tasks.Where(t => t.State == State.Removed).ToList();
+            
+            return TaskToTaskDTO(taskList);
         }
 
         public Response Update(TaskUpdateDTO task)
