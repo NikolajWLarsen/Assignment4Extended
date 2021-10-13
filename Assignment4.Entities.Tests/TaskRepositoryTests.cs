@@ -230,8 +230,8 @@ namespace Assignment4.Entities.Tests
             Assert.Equal("tag1", actualTag1.Name);
         }
 
-        /* [Fact]
-        public void given_taskId_return_TaskDetailsDTO()
+        [Fact]
+        public void read_given_taskId_return_TaskDetailsDTO()
         {  
             //Arrange
              var newTask = new Task{
@@ -244,45 +244,270 @@ namespace Assignment4.Entities.Tests
                     StateUpdated = DateTime.UtcNow   
             };
 
-           // TaskDetailsDTO exp = new TaskDetailsDTO{Title = "Task1",Description = "This is a new task", Created = DateTime.UtcNow, 
-            //AssignedToName = "Bobby", List<string> list= new List<string>(), };
+            _context.Tasks.Add(newTask);
+            _context.SaveChanges(); 
 
-
+            TaskDetailsDTO exp = new TaskDetailsDTO(1,"Task1", "This is a new task", DateTime.UtcNow, "1",  new List<string>(), State.Closed, DateTime.UtcNow);
 
             //Act
             var actual = _repo.Read(newTask.Id);
             var expected = exp;
 
             //Assert
-
+            Assert.Equal(expected.Title, actual.Title);
+            Assert.False(actual.Tags.Any());
+            Assert.Equal(expected.Created, actual.Created, precision: TimeSpan.FromSeconds(2));
         }
-
 
         [Fact]
         public void ReadAll_returns_IReadOnlyCollection_containing_TaskDTO_1_2()
         {
             //arrange
-            var task1 = new Tag {Id = 1, Name = "tag 1", tasks = new List<Task>(){}};
-            var task2 = new Tag {Id = 2, Name = "tag 2", tasks = new List<Task>(){}};
+            var task1 = new Task {
+                Id = 1, 
+                Title = "task 1", 
+                AssignedTo = 1, 
+                Description = "The first task", 
+                Created = DateTime.UtcNow,
+                State = State.New,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            var task2 = new Task {
+                Id = 2, 
+                Title = "task 2", 
+                AssignedTo = 2, 
+                Description = "The second task", 
+                Created = DateTime.UtcNow,
+                State = State.Closed,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
             
-            _context.Tags.Add(task1); 
-            _context.Tags.Add(task2);
+            _context.Tasks.Add(task1); 
+            _context.Tasks.Add(task2); 
 
             _context.SaveChanges();
 
-            var taskDTO1 = new TaskDTO(1,"tag 1");
-            var taskDTO2 = new TaskDTO(2, "tag 2");
 
+            //public record TaskDTO(int Id, string Title, string AssignedToName, IReadOnlyCollection<string> Tags, State State);
+            var taskDTO1 = new TaskDTO(1, "task 1", "1", new List<string>(), State.New);
+            var taskDTO2 = new TaskDTO(2, "task 2", "2", new List<string>(), State.Closed);
+
+    
             //act
             var actual = _repo.ReadAll();
 
             //assert
-             /* Assert.Collection(actual,
-                t => Assert.Equal(tagDTO1, t),
-                t => Assert.Equal(tagDTO2, t)
-             ); */
-        //}
+            Assert.Collection(actual,
+                t => Assert.False(t.Tags.ToList().Any()),
+                t => Assert.False(t.Tags.ToList().Any())
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(taskDTO1.Title, t.Title),
+                t => Assert.Equal(taskDTO2.Title, t.Title)
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(taskDTO1.State, t.State),
+                t => Assert.Equal(taskDTO2.State, t.State)
+            );
+        }
+
+        [Fact]
+        public void ReadAllByState_returns_IReadOnlyCollection_containing_TaskDTO_1()
+        {
+            //arrange
+            var task1 = new Task {
+                Id = 1, 
+                Title = "task 1", 
+                AssignedTo = 1, 
+                Description = "The first task", 
+                Created = DateTime.UtcNow,
+                State = State.New,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            var task2 = new Task {
+                Id = 2, 
+                Title = "task 2", 
+                AssignedTo = 2, 
+                Description = "The second task", 
+                Created = DateTime.UtcNow,
+                State = State.Closed,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            
+            _context.Tasks.Add(task1); 
+            _context.Tasks.Add(task2); 
+
+            _context.SaveChanges();
+
+            var expected = new TaskDTO(1, "task 1", "1", new List<string>(), State.New);
+    
+            //act
+            var actual = _repo.ReadAllByState(State.New);
+
+            //assert
+            Assert.Collection(actual,
+                t => Assert.False(t.Tags.ToList().Any())
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.Title, t.Title)
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.State, t.State)
+            );
+        }
+
+        [Fact]
+        public void ReadAllByTag_returns_IReadOnlyCollection_containing_TaskDTO_2()
+        {
+            //arrange
+            var task1 = new Task {
+                Id = 1, 
+                Title = "task 1", 
+                AssignedTo = 1, 
+                Description = "The first task", 
+                Created = DateTime.UtcNow,
+                State = State.New,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            var task2 = new Task {
+                Id = 2, 
+                Title = "task 2", 
+                AssignedTo = 2, 
+                Description = "The second task", 
+                Created = DateTime.UtcNow,
+                State = State.Closed,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            var tag1 = new Tag {Id = 1, Name = "tag1", tasks = new List<Task>(){task1}};
+            var tag2 = new Tag {Id = 2, Name = "tag2", tasks = new List<Task>(){task2}};
+
+            task1.Tags.Add(tag1);
+            task2.Tags.Add(tag2);
+            
+            _context.Tasks.Add(task1); 
+            _context.Tasks.Add(task2); 
+
+            _context.SaveChanges();
+
+            var expected = new TaskDTO(2, "task 2", "2", new List<string>(){"tag2"}, State.Closed);
+            //Console.WriteLine(expected.Title);
+
+    
+            //act
+            var actual = _repo.ReadAllByTag("tag2");
+
+            //assert
+            Assert.Collection(actual,
+                t => Assert.True(t.Tags.ToList().Any())
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.Title, t.Title)
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.State, t.State)
+            );
+
+        }
+
+        [Fact]
+        public void ReadAllByUser_returns_IReadOnlyCollection_containing_TaskDTO_1()
+        {
+            //arrange
+            var task1 = new Task {
+                Id = 1, 
+                Title = "task 1", 
+                AssignedTo = 1, 
+                Description = "The first task", 
+                Created = DateTime.UtcNow,
+                State = State.New,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            var task2 = new Task {
+                Id = 2, 
+                Title = "task 2", 
+                AssignedTo = 2, 
+                Description = "The second task", 
+                Created = DateTime.UtcNow,
+                State = State.Closed,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            
+            _context.Tasks.Add(task1); 
+            _context.Tasks.Add(task2); 
+
+            _context.SaveChanges();
+
+            var expected = new TaskDTO(1, "task 1", "1", new List<string>(), State.New);
+    
+            //act
+            var actual = _repo.ReadAllByUser(1);
+
+            //assert
+            Assert.Collection(actual,
+                t => Assert.False(t.Tags.ToList().Any())
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.Title, t.Title)
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.AssignedToName, t.AssignedToName)
+            );
+        }
 
 
+        [Fact]
+        public void ReadAllRemoved_returns_IReadOnlyCollection_containing_TaskDTO_1()
+        {
+            //arrange
+            var task1 = new Task {
+                Id = 1, 
+                Title = "task 1", 
+                AssignedTo = 1, 
+                Description = "The first task", 
+                Created = DateTime.UtcNow,
+                State = State.Removed,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            var task2 = new Task {
+                Id = 2, 
+                Title = "task 2", 
+                AssignedTo = 2, 
+                Description = "The second task", 
+                Created = DateTime.UtcNow,
+                State = State.Closed,
+                Tags =  new List<Tag>(),
+                StateUpdated = DateTime.UtcNow
+            };
+            
+            _context.Tasks.Add(task1); 
+            _context.Tasks.Add(task2); 
+
+            _context.SaveChanges();
+
+            var expected = new TaskDTO(1, "task 1", "1", new List<string>(), State.Removed);
+    
+            //act
+            var actual = _repo.ReadAllRemoved();
+
+            //assert
+            Assert.Collection(actual,
+                t => Assert.False(t.Tags.ToList().Any())
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.Title, t.Title)
+            );
+            Assert.Collection(actual,
+                t => Assert.Equal(expected.State, t.State)
+            );
+        }
     }
 }
