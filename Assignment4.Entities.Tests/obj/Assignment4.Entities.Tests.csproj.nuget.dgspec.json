@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj": {}
+    "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj": {}
   },
   "projects": {
-    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
+    "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
+        "projectUniqueName": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
         "projectName": "Assignment4.Core",
-        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
-        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
-        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/obj/",
+        "projectPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj",
+        "packagesPath": "/Users/Freja/.nuget/packages/",
+        "outputPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+          "/Users/Freja/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -56,17 +56,17 @@
         }
       }
     },
-    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj": {
+    "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj",
+        "projectUniqueName": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj",
         "projectName": "Assignment4.Entities.Tests",
-        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj",
-        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
-        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities.Tests/obj/",
+        "projectPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities.Tests/Assignment4.Entities.Tests.csproj",
+        "packagesPath": "/Users/Freja/.nuget/packages/",
+        "outputPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+          "/Users/Freja/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -78,8 +78,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj": {
-                "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj"
+              "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj": {
+                "projectPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj"
               }
             }
           }
@@ -94,6 +94,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.11.0, )"
@@ -134,17 +138,17 @@
         }
       }
     },
-    "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj": {
+    "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj",
+        "projectUniqueName": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj",
         "projectName": "Assignment4.Entities",
-        "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj",
-        "packagesPath": "/Users/nikolajworsoelarsen/.nuget/packages/",
-        "outputPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Entities/obj/",
+        "projectPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities/Assignment4.Entities.csproj",
+        "packagesPath": "/Users/Freja/.nuget/packages/",
+        "outputPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Entities/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nikolajworsoelarsen/.nuget/NuGet/NuGet.Config"
+          "/Users/Freja/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -156,8 +160,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
-                "projectPath": "/Users/nikolajworsoelarsen/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj"
+              "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj": {
+                "projectPath": "/Users/Freja/Documents/Programmering/3.semester/BDSA/Assignment04/Assignment4Extended/Assignment4.Core/Assignment4.Core.csproj"
               }
             }
           }
@@ -171,6 +175,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
