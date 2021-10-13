@@ -120,20 +120,13 @@ namespace Assignment4.Entities
 
         public Response Update(TaskUpdateDTO task)
         {
-            //Create/update task must allow for editing tags.
-            //Updating the State of a task will change the StateUpdated to current time in UTC.
-            //Assigning a user which does not exist should return BadRequest.
-            ////var  = _kanbanContext.Tasks.Find(task.Id);
-            //var taskResult = _kanbanContext.Tasks.Select(t =>)
             var taskResult =_kanbanContext.Tasks.Include(t => t.Tags).FirstOrDefault(t => t.Id == task.Id);
             
             if (taskResult == null){
-                Console.WriteLine("notfound");
                 return Response.NotFound;
             }
 
             if (task.AssignedToId == null) {
-                Console.WriteLine("badrequest");
                 return Response.BadRequest;
             }
 
@@ -145,7 +138,6 @@ namespace Assignment4.Entities
             taskResult.State = task.State;
             taskResult.StateUpdated = DateTime.UtcNow;
  
-            Console.WriteLine(taskResult.Title + " " + taskResult.Description);
             _kanbanContext.Update(taskResult);
             _kanbanContext.SaveChanges();
             

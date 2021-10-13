@@ -5,6 +5,7 @@ using Xunit;
 using Assignment4.Core;
 using Assignment4.Entities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assignment4.Entities.Tests
 {
@@ -183,21 +184,21 @@ namespace Assignment4.Entities.Tests
         [Fact]
         public void update_should_enable_editing_tags()
         {
-            var emptyTasks = new List<Task>(){};
-
             var newTask = new Task{
                     Title = "Task1",
                     AssignedTo = (int) 1,
                     Description = "This is a new task",
                     Created = DateTime.UtcNow,
                     State = State.Closed,
-                    Tags = new List<Tag>(){            
-                        new Tag {Id = 1, Name = "tag1", tasks = emptyTasks},
-                        new Tag {Id = 2, Name = "tag2", tasks = emptyTasks},
-                        new Tag {Id = 3, Name = "tag3", tasks = emptyTasks},
-                    },
+                    Tags = new List<Tag>(),
                     StateUpdated = new DateTime(2021,10,10)
             };
+            var tags = new List<Tag>(){            
+                        new Tag {Id = 1, Name = "tag1", tasks = new List<Task>(){newTask}},
+                        new Tag {Id = 2, Name = "tag2", tasks = new List<Task>(){newTask}},
+                        new Tag {Id = 3, Name = "tag3", tasks = new List<Task>(){newTask}},
+                    };
+            newTask.Tags = tags;
             _context.Tasks.Add(newTask);
             _context.SaveChanges();    
 
@@ -214,21 +215,19 @@ namespace Assignment4.Entities.Tests
             _repo.Update(taskUpdateDTO); 
             _context.SaveChanges(); 
       
-            var task1 = _context.Tasks.Find(1);
-            Console.WriteLine(task1.Tags.Count);
-            var actual = task1.Tags;
+            var actualTask = _context.Tasks.Find(1);
+            var actualTags = actualTask.Tags;
+                        
+            //Assert            
+          
+            var actualTag1 = actualTags.ToList().ElementAt(0);
+            var actualLength = actualTags.ToList().Count;
             
-            var tag1 = new Tag {Id = 1, Name = "tag1", tasks = new List<Task>(){task1}}; //task1
-            //Assert
-            Assert.Equal("New Task", task1.Title);
-            foreach (var t in actual)
-            {
-                Console.WriteLine((tag1).Name == t.Name);
-            }
-            //TODO: count instead
-            Assert.Collection(actual,
-                t => Assert.Equal((tag1), t)
-            );
+            Assert.Equal("New Task", actualTask.Title);
+            Assert.Equal(taskUpdateDTO.Title, actualTask.Title);
+            Assert.Equal(taskUpdateDTO.Description, actualTask.Description);
+            Assert.Equal(1, actualLength);
+            Assert.Equal("tag1", actualTag1.Name);
         }
 
         /* [Fact]
